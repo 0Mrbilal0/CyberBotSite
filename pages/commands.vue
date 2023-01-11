@@ -2,15 +2,21 @@
    <table>
     <thead>
         <tr>
-            <th v-for="(capitalize, columns) in capitalizes" :key="columns">
-                {{ capitalize }}
+            <th>
+                Commandes
+            </th>
+            <th>
+                Descriptions
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr v-for="(entry, row) in entrys" :key="row">
-            <td v-for="(colonne, columns) in colonnes" :key="columns" >
-                {{ entry[colonne] }}
+        <tr v-for= "(colonne, columns) in colonnes" :key="columns" >
+            <td>
+                {{ colonne.names }}
+            </td>
+            <td>
+                {{ colonne.descriptions }}
             </td>
         </tr>
     </tbody>
@@ -18,20 +24,14 @@
 </template>
 
 <script>
+const sequelize = require('../models/index')
+
 export default {
+    
     data() {
         return{
-            capitalizes: [
-                'Commandes',
-                'Descriptions',
-                // 'Roles'
-            ],
-            entrys: 0,
             colonnes: [
-                {names: 'un name', descriptions: 'une description'},
-                {names: 'deux name', descriptions: 'deux descrtipions'},
-                {names: 'trois name', descriptions: 'trois descriptions'},
-                {names: 'quatre name', descriptions: 'quatre descriptions'},
+                
             ],
         }
     },
@@ -39,7 +39,8 @@ export default {
         titleTemplate: '%s - Commandes'
     },
     mounted() {
-        console.log(colonnes[entrys]['names']);
+        
+        console.log(this.colonnes);
     }
 }
 </script>
